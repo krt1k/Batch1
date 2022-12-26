@@ -1,6 +1,6 @@
 package dataStructures.linkedList;
 
-public class test {
+public class driverCode {
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
 

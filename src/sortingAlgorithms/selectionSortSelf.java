@@ -5,9 +5,9 @@ import java.util.*;
 public class selectionSortSelf
 {
     public static void main(String[] args) {
-        Scanner pk = new Scanner(System.in);
 
-        /*int size = pk.nextInt();
+        /*Scanner pk = new Scanner(System.in);
+        int size = pk.nextInt();
         int arr[] = new int[size];
         for (int i=0; i<size; i++)
             arr[i] = pk.nextInt();*/
@@ -21,14 +21,16 @@ public class selectionSortSelf
 
     public static int[] selectionSort(int[] arr, int size){
         for(int i=0; i<size-1; i++){
-                int temp = arr[i];
+            int maxPos = 0;
 
-            for(int j=1; j<size-i; j++){
-                if(temp < arr[j]){
-                    arr[i] = arr[j];
-                    temp = arr[j];
+            for (int j = 1; j < size-i; j++) {
+                if(arr[maxPos]<arr[j]){
+                    maxPos = j;
                 }
             }
+            int temp = arr[(size-1)-i];
+            arr[(size-1)-i] = arr[maxPos];
+            arr[maxPos] = temp;
         }
         return arr;
     }
