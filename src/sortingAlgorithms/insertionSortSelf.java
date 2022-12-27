@@ -11,6 +11,7 @@ public class insertionSortSelf {
         int size = 5;
         int[] arr = {3, 5, 2, 6, 3};
 
+        System.out.println(Arrays.toString(arr));
         System.out.println(Arrays.toString(insertionSort(arr, size)));
 
     }
@@ -23,7 +24,7 @@ public class insertionSortSelf {
                 if(temp<arr[j]){
                     arr[j+1] = arr[j];
                 }
-                if(j==0)
+                if((j==0) && (temp < arr[j]))
                     arr[j] = temp;
 
             }
