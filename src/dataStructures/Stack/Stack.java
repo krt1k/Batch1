@@ -1,5 +1,5 @@
 package dataStructures.Stack;
-
+// Using Arrays
 import java.util.Scanner;
 
 public class Stack {
