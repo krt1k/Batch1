@@ -1,114 +1,64 @@
-import java.util.*;
-import java.io.*;
+import java.util.Scanner;
 
-class Node {
-    int data;
-    Node next;
+public class test{
+    private Node head;
+    private Node tail;
+    private int size;
 
-    Node(int d)
-    {
-        data = d;
-        next = null;
+    class Node{
+        int data;
+        Node next;
+
+        public Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
     }
-}
 
-public class test {
-    static int z =0;
+    public test(){
+        size = 0;
+    }
 
-    static Node head,tail; //by default initialized to null
-
-    public static void add(int data)
-    {
-        Node temp = new Node(data);
-        temp.next = null;
+    public void add(int data){
+        Node n = new Node(data);
 
         if(head == null)
-            head = tail = temp;
-        else
-        {
-            tail.next = temp;
-            tail = temp;
-        }
-    }
+            head = n;
+        else{
+            Node newnode = head;
 
-    public static void insert(int value,int position)
-    {
-        Node temp = new Node(value);
-        temp.next = null;
-
-        if(position == 1)
-        {
-            temp.next = head;
-            head = temp;
-        }
-        else
-        {
-            Node curr = head;
-            for(int i=1;i<position-1;i++)
-            {
-                curr = curr.next;
+            while(newnode.next != null){
+                newnode = newnode.next;
             }
-            temp.next = curr.next;
-            curr.next = temp;
+
+            newnode.next = n;
         }
+
     }
 
-    public static void delete(int val)
-    {
-        Node curr = head;
-        Node prev = null;
+    public void printAtest(){
+        Node n = head;
 
-        if(curr != null && curr.data == val)
-        {
-            head = curr.next;
-            return;
+        while(n.next!=null){
+            System.out.print(n.data+" ");
+            n = n.next;
         }
+        System.out.print(n.data);
 
-        while(curr != null && curr.data != val)
-        {
-            prev = curr;
-            curr = curr.next;
-        }
+    }
 
-        if(curr == null)
-        {
-            System.out.println("Not in list");
-            z = 1;
-            return;
-        }
+    public static void main(String[] args){
+        Scanner pk = new Scanner(System.in);
+        test e = new test();
 
-        prev.next = curr.next;
+        int a = pk.nextInt();
+
+        for(int i=0; i<a; i++)
+            e.add(pk.nextInt());
+
+        e.printAtest();
     }
 
 
-    // Method to print the LinkedList.
-    public static void display()
-    {
-        Node currNode = head;
 
-        while (currNode != null) {
-            System.out.print(currNode.data + " ");
-            currNode = currNode.next;
-        }
-        System.out.println();
-    }
-
-    public static void main(String[] args)
-    {
-        Scanner sc = new Scanner(System.in);
-        int val;
-        test list = new test();
-
-        add(10);
-        add(20);
-        add(30);
-        add(40);
-        add(50);
-
-        val = sc.nextInt();
-        delete(val);
-
-        if (z==0)
-            display();
-    }
 }
