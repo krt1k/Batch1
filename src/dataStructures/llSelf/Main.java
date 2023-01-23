@@ -37,5 +37,9 @@ public class Main {
 
         e.printAll();
         System.out.println();
+
+        e.reverse();
+        e.printAll();
+        System.out.println();
     }
 }

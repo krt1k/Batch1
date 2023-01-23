@@ -5,11 +5,11 @@ public class ll {
     private Node tail;
     private int size;
 
-    class Node{
+    class Node {
         int data;
         Node next;
 
-        public Node(){
+        public Node() {
             this.next = null;
         }
 
@@ -19,23 +19,23 @@ public class ll {
         }
     }
 
-    public ll(){
+    public ll() {
         size = 0;
     }
 
-    public void insertFirst(int data){
+    public void insertFirst(int data) {
         Node n = new Node(data);
         n.next = head;
         head = n;
 
-        if(tail == null)
+        if (tail == null)
             tail = head;
 
         size++;
     }
 
-    public void insertLast(int data){
-        if (tail == null){
+    public void insertLast(int data) {
+        if (tail == null) {
             insertFirst(data);
             return;
         }
@@ -47,13 +47,12 @@ public class ll {
         size++;
     }
 
-    public void insertAt(int data, int pos){
+    public void insertAt(int data, int pos) {
         if (pos == 0)
             insertFirst(data);
-        else if (pos == size-1) {
+        else if (pos == size - 1) {
             insertLast(data);
-        }
-        else {
+        } else {
             Node n = new Node(data);
 
             Node pointer = head;
@@ -71,7 +70,7 @@ public class ll {
         int val = head.data;
         head = head.next;
 
-        if(head == null)
+        if (head == null)
             tail = null;
 
         size--;
@@ -84,7 +83,7 @@ public class ll {
         Node pointer = head;
         Node temp = new Node();
 
-        while(pointer.next != null){
+        while (pointer.next != null) {
             temp = pointer;
             pointer = pointer.next;
         }
@@ -94,15 +93,36 @@ public class ll {
         return val;
     }
 
-    public void printAll(){
+    public void printAll() {
         Node newNode = head;
 
-        do{
-            System.out.print(newNode.data+" ");
+        do {
+            System.out.print(newNode.data + " ");
             newNode = newNode.next;
-        }while(newNode.next != null);
+        } while (newNode.next != null);
         System.out.print(newNode.data);
 
     }
+
+    public void reverse() {
+        if (size < 2) {
+            return;
+        }
+
+        Node prev = null;
+        Node present = head;
+        Node next = present.next;
+
+        while (present != null) {
+            present.next = prev;
+            prev = present;
+            present = next;
+            if (next != null) {
+                next = next.next;
+            }
+        }
+        head = prev;
+    }
+
 
 }

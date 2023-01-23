@@ -1,4 +1,4 @@
-package llnew;
+package dataStructures.llDharmesh;
 
 public class ll {
 	private Node head;
